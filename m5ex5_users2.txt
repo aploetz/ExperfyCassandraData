@@ -1,0 +1,9 @@
+username|firstname|lastname|position|email
+Sheppard|Derial|Book|chaplain|dbook@serenity.com
+Dr.|Simon|Tam|doctor|stam@serenity.com
+mal|Malcolm|Reynolds|Captain|mreynolds@serenity.com
+Jayne|Jayne|Cobb|tank|heroofcanton@serenity.com
+Wash|Hoban|Washburne|pilot|hwash@serenity.com
+Inara|Inara|Serra|registered companion|iserra@serenity.com
+Kaylee|Kaywinneth Lee|Frye|engineer|kfrye@serenity.com
+Zoey|Zoey|Washburne|1st officer|zwashburne@serenity.com

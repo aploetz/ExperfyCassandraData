@@ -1,0 +1,21 @@
+isbn|author|category|edition|price|publisher|title|year
+9781935182870|Kyle Banker|Computer Databases|n/a|4499|Manning Publications|MongoDB In Action|2012
+0399136312|Tom Clancy|Military Fiction|1st Edition|1599|GP Putnam's Sons|The Sum of All Fears|1991
+156592312X|Kevin Dowd|Computer Operating Systems|2nd Edition|2995|OReilly & Associates Inc|High Performance Computing|1998
+0425133516|Tom Clancy|Military Fiction|2nd Edition|799|Berkley Books|The Hunt for Red October|1983
+0425109720|Tom Clancy|Military Fiction|2nd Edition|799|Berkley Books|Patriot Games|1988
+9781449381561|Christina Chodorow|Computer Databases|1st Edition|3999|OReilly & Associates Inc|MongoDB: The Definitive Guide|2010
+0618619585|Jim Lovell|Biography|1st Edition|1495|Mariner Books|Apollo 13|1994
+0932760317|David A. Lien|Computer Programming|2nd Edition|2999|Compusoft Publishing|Learning BASIC for the Tandy 1000|1986
+1565926102|Rasmus Lerdorf|Computer Programming|1st Edition|3995|OReilly & Associates Inc|Programming PHP|2002
+0932760414|David A. Lien|Computer Operating Systems|2nd Edition|1999|Compusoft Publishing|MS-DOS Volume 1: The Basics|1986
+0425122123|Tom Clancy|Military Fiction|2nd Edition|1599|Berkley Books|Clear and Present Danger|1990
+9780137081851|Ian Evans|Java Programming|4th Edition|4999|Addison-Wesley|The Java EE 6 Tutorial Basic Concepts|2011
+0321263545|George Coulouris|Software Architecture|4th Edition|3499|Addison-Wesley|Distributed Systems|2005
+78621976001|Chris Britton|Software Architecture|2nd Edition|1599|Addison-Wesley|IT Architecture and Middleware|2009
+0399138404|Tom Clancy|Military Fiction|1st Edition|1599|GP Putnam's Sons|Without Remorse|1994
+9781783989126|Robbie Strickland|Computer Databases|1st Edition|2499|Packt Publishing|Cassandra High Availability|2014
+0932760422|David A. Lien|Computer Operating Systems|2nd Edition|795|Compusoft Publishing|MS-DOS Volume 2: Advanced Applications|1986
+0333801369|Rob Callan|Computer Algorithms|1st Edition|1599|Palgrave Macmillan|Artificial Intelligence|2003
+9781430229704|Darl Kuhn|Computer Databases|n/a|5999|Apress|Pro Oracle Database 11g Administration|2010
+9781418836290|Joan Casteel|Computer Databases|n/a|4999|Thomson Course Technology|Oracle 10g SQL|2007

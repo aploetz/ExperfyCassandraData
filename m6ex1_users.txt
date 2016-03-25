@@ -1,0 +1,11 @@
+username|firstname|lastname|position|email|age
+Zoey|Zoey|Washburne|1st officer|zwashburne@serenity.com|33
+Kaylee|Kaywinnet Lee|Frye|engineer|kfrye@serenity.com|24
+Jayne|Jayne|Cobb|tank|heroofcanton@serenity.com|36
+Sheppard|Derrial|Book|chaplain|dbook@serenity.com|55
+Inara|Inara|Serra|registered companion|iserra@serenity.com|32
+Dr.|Simon|Tam|doctor|stam@serenity.com|27
+River|River|Tam|seer|rtam@serenity.com|16.23847238947239847293847234569
+Wash|Hoban|Washburne|pilot|hwash@serenity.com|35
+Mal|Malcolm|Reynolds|captain|mreynolds@serenity.com|46
+

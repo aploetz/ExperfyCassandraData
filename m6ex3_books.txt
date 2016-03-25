@@ -1,0 +1,11 @@
+author_first|author_last|author_twitter|title|edition|publisher|year|isbn
+Robbie|Strickland|@rs_atl|Cassandra High Availability|1|Packt Publishing|2014|978-1-78398-912-6
+Tom|Clancy|@Tom_Clancy_Wiki|Patriot Games|2|Berkley Books|1988|0-425-10972-0
+Tom|Clancy|@Tom_Clancy_Wiki|Clear and Present Danger|2|Berkley Books|1990|0-425-12212-3
+Tom|Clancy|@Tom_Clancy_Wiki|The Hunt for Red October|2|Berkley Books|1983|0-425-13351-6
+Tom|Clancy|@Tom_Clancy_Wiki|The Sum of All Fears|1|GP Putnam's Sons|1991|0-399-13631-2
+Tom|Clancy|@Tom_Clancy_Wiki|Without Remorse|1|GP Putnam's Sons|1994|0-399-13840-4
+Jim|Lovell||Apollo 13|1|Mariner Books|1994|0-618-61958-5
+David A.|Lien||Learning BASIC for the Tandy 1000|2|Compusoft Publishing|1986|0-932760-31-7
+David A.|Lien||MS-DOS Volume 1: The Basics|2|Compusoft Publishing|1986|0-932760-41-4
+David A.|Lien||MS-DOS Volume 2: Advanced Applications|2|Compusoft Publishing|1986|0-932760-42-2
