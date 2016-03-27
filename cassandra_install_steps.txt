@@ -1,10 +1,12 @@
-#JCE installation
-cd ~/Downloads
-ls -al *.jar
-cp *.jar /usr/lib/jvm/jdk1.8.0_74/jre/lib/security/
-
 #verify Java version
 java -version
+
+#JCE installation
+cd ~/Downloads
+tar -zxvf jce_policy-8.tar.gz
+ls -al *.jar
+cp *.jar /usr/lib/jvm/jdk1.8.0_74/jre/lib/security/
+ls -al /usr/lib/jvm/jdk1.8.0_74/jre/lib/security/
 
 #Cassandra installation
 sudo mkdir /local
@@ -20,12 +22,29 @@ cd cassandra
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -export -alias MovingPictures -file mp.cer -keystore .keystore
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -import -v -trustcacerts -alias MovingPictures -file mp.cer -keystore .truststore
 
+#set properties in cassandra.yaml here!!!
+cluster_name: 'MovingPictures'
+seeds: “192.168.0.100”
+listen_address: 192.168.0.100
+rpc_address: 192.168.0.100
+endpoint_snitch: GossipingPropertyFileSnitch
+authenticator: PasswordAuthenticator
+authorizer: CassandraAuthorizer
+client_encryption_options:
+enabled: true
+keystore: conf/.keystore
+keystore_password: reindeerFlotilla
+require_client_auth: false
+
+#set properties in the cassandra-rackdc.properties here!!!
+dc=AaronsLab
+rack=tlr600
+
 #starting Cassandra
 bin/cassandra -p cassandra.pid
 
 #verify that it is running
 ps -ef | grep cassandra
-tail -f /var/log/cassandra/system.log
 bin/nodetool status
 
 #prepare certificate for use with cqlsh
