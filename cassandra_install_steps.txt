@@ -1,0 +1,68 @@
+#JCE installation
+cd ~/Downloads
+ls -al *.jar
+cp *.jar /usr/lib/jvm/jdk1.8.0_74/jre/lib/security/
+
+#verify Java version
+java -version
+
+#Cassandra installation
+sudo mkdir /local
+sudo chown $USER:$USER /local
+mv ~/Downloads/apache-cassandra-2.2.5-bin.tar.gz /local
+cd /local
+tar -zxvf apache-cassandra-2.2.5-bin.tar.gz
+mv apache-cassandra-2.2.5 cassandra
+cd cassandra
+
+#certificate preparation
+/usr/lib/jvm/jdk1.8.0_74/bin/keytool -genkey -keyalg RSA -alias MovingPictures -keystore .keystore
+/usr/lib/jvm/jdk1.8.0_74/bin/keytool -export -alias MovingPictures -file mp.cer -keystore .keystore
+/usr/lib/jvm/jdk1.8.0_74/bin/keytool -import -v -trustcacerts -alias MovingPictures -file mp.cer -keystore .truststore
+
+#starting Cassandra
+bin/cassandra -p cassandra.pid
+
+#verify that it is running
+ps -ef | grep cassandra
+tail -f /var/log/cassandra/system.log
+bin/nodetool status
+
+#prepare certificate for use with cqlsh
+#convert keystore to pkcs12 format
+/usr/lib/jvm/jdk1.8.0_74/bin/keytool -importkeystore -srckeystore .keystore -destkeystore p12.keystore -deststoretype PKCS12 -srcstorepass reindeerFlotilla -deststorepass reindeerFlotilla
+#export the cert to a .pem file
+openssl pkcs12 -in p12.keystore -nokeys -out mp.cer.pem -passin pass:reindeerFlotilla
+
+#prepare your cqlshrc file
+ls -al ~/.cassandra
+#if you  it doesn't exist, create it:
+mkdir ~/.cassandra
+#cd over to your ~/.cassandra directory
+cd ~/.cassandra
+
+#copy the .pem pkcs12 file over to your ~/.cassandra directory
+cp /local/cassandra/conf/mp.cer.pem ~/.cassandra/mp.cer.pem
+
+
+#create your cqlshrc file
+vi ~/.cassandra/cqlshrc
+
+[connection]
+hostname = 192.168.0.100
+factory = cqlshlib.ssl.ssl_transport_factory
+[ssl]
+certfile = ~/.cassandra/mp.cer.pem
+validate = false
+
+#login using the default superuser and SSL
+bin/cqlsh -u cassandra -p cassandra --ssl
+
+#stop cassandra
+
+bin/nodetool disablegossip
+bin/nodetool drain
+kill `cat cassandra.pid`
+
+
+
