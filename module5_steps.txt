@@ -1,0 +1,76 @@
+exercise 1:
+bin/cqlsh -u cassandra -p cassandra --ssl
+CREATE USER cassdba WITH PASSWORD 'flynnLives' SUPERUSER;
+exit
+bin/cqlsh -u cassdba -p 'flynnLives' --ssl
+SELECT * FROM system.local;
+SELECT UUID() FROM system.local;
+ALTER USER cassandra WITH PASSWORD 'db67841a-e138-4afa-81dd-bb8f34a40075';
+
+exercise 2:
+CREATE KEYSPACE experfy_class WITH replication = {'class':'NetworkTopologyStrategy','AaronsLab':'1'};
+
+exercise 3:
+use experfy_class;
+CREATE TABLE users (
+  username TEXT,
+  firstname TEXT,
+  lastname TEXT,
+  position TEXT,
+  email TEXT,
+  PRIMARY KEY (username)
+);
+
+exercise 4:
+INSERT INTO users (username,firstname,lastname,position,email) VALUES ('mal','Malcolm','Reynolds','Sargeant','mreynolds@bc.com');
+UPDATE users SET position='Captain',email='mreynolds@serenity.com' WHERE username='mal';
+UPDATE users SET firstname='Hoban',lastname='Washburne',position='pilot',email='hwashburne@serenity.com' WHERE username='Wash';
+INSERT INTO users (username,email) VALUES ('Wash','wash@serenity.com');
+
+exercise 5:
+COPY users (username,firstname,lastname,position,email) FROM '/home/aploetz/workspace/experfy_files/m5ex5_users.txt' WITH DELIMITER='|' AND HEADER=true;
+SELECT * FROM users;
+
+exercise 6:
+COPY users (username,firstname,lastname,position,email) TO
+'/home/aploetz/workspace/experfy_files/m5ex6_users2.txt' WITH DELIMITER='|' AND HEADER=true;
+
+exercise 7:
+desc KEYSPACE experfy_class;
+desc TABLE users;
+desc TABLE experfy_class.users;
+ALTER TABLE experfy_class.users ADD age DOUBLE;
+desc TABLE experfy_class.users;
+SELECT * FROM users;
+
+
+exercise 8:
+COPY users (username,age) FROM '/home/aploetz/workspace/experfy_files/m5ex6_users.txt' WITH DELIMITER='|' AND HEADER=true;
+SELECT * FROM users;
+SELECT username,age FROM users WHERE username='River';
+exit
+
+vi ~/.cassandra/cqlshrc
+[ui]
+float_precision = 10
+
+use experfy_class;
+SELECT username,age FROM users WHERE username='River';
+
+
+excercise 9:
+use experfy_class;
+CREATE TABLE users2 (
+  username TEXT,
+  firstname TEXT,
+  lastname TEXT,
+  position TEXT,
+  email TEXT,
+  PRIMARY KEY (username)
+);
+COPY users2 (username,firstname,lastname,position,email) FROM '/home/aploetz/workspace/experfy_files/m5ex5_users.txt' WITH DELIMITER='|' AND HEADER=true;
+SELECT * FROM users2 WHERE username='Sheppard';
+DELETE FROM users2 WHERE username='Sheppard';
+SELECT * FROM users2 WHERE username='Sheppard';
+TRUNCATE experfy_class.users2;
+DROP TABLE experfy_class.users;
