@@ -1,0 +1,43 @@
+#experfy stress yaml for security_log
+
+#keyspace name
+keyspace: experfy_stress
+
+#table name
+table: security_logs
+
+#Definitions for PRIMARY KEY columns
+#PRIMARY KEY ((location, day_bucket), checkpoint_time, employee_id)
+#
+#For each column you can specify (note the defaults):
+#
+#Size distribution – Defines the distribution of sizes for text, blob, set and list types  (default of UNIFORM(4..8))
+#Population distribution – Defines the distribution of unique values for the column values (default of UNIFORM(1..100B))
+#Cluster distribution – Defines the  distribution for the number of clustering prefixes within a given partition (default of FIXED(1))
+#
+columnspec:
+  - name: location
+    size: fixed(4)
+    population: uniform(1..11)    # eleven locations
+    cluster: gaussian(1..11)
+  - name: checkpoint_time
+#    cluster: uniform(1..1K)       # up to 1000 dates
+    cluster: uniform(1..10)       # up to 1000 dates
+  - name: employee_id
+    size: fixed(6)
+#    population: uniform(1..10K)   # max of 10000 unique employee ids
+    population: uniform(1..50)   # max of 10000 unique employee ids
+#    cluster: uniform(1..10K)
+    cluster: uniform(1..10)
+
+#insert definition
+insert:
+  partitions: fixed(1)            # we're collecting data based on an event of an employee going through a security checkpoint.
+  batchtype: UNLOGGED
+  select: uniform(1..10)/10       # Uniform chance any single generated CQL row will be visited in a partition
+
+#query definition(s)
+queries:
+   empQuery:
+      cql: SELECT * FROM security_logs WHERE employee_id = ?
+      fields: multirow
