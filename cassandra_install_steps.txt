@@ -24,11 +24,13 @@ mv apache-cassandra-2.2.5 cassandra
 cd cassandra
 
 #certificate preparation
+# -- replace "MovingPictures" with the name of your cluster or data center
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -genkey -keyalg RSA -alias MovingPictures -keystore .keystore
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -export -alias MovingPictures -file mp.cer -keystore .keystore
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -import -v -trustcacerts -alias MovingPictures -file mp.cer -keystore .truststore
 
 #set properties in cassandra.yaml here!!!
+# -- replace "MovingPictures" with the name of your cluster or data center
 cluster_name: 'MovingPictures'
 seeds: “192.168.0.100”
 listen_address: 192.168.0.100
@@ -43,6 +45,7 @@ keystore_password: reindeerFlotilla
 require_client_auth: false
 
 #set properties in the cassandra-rackdc.properties here!!!
+# -- replace "AaronsLab" and "tlr600" with the name of your data center and rack.
 dc=AaronsLab
 rack=tlr600
 
@@ -55,6 +58,7 @@ bin/nodetool status
 
 #prepare certificate for use with cqlsh
 #convert keystore to pkcs12 format
+# -- replace "reindeerFlotilla" with your own passphrase.
 /usr/lib/jvm/jdk1.8.0_74/bin/keytool -importkeystore -srckeystore .keystore -destkeystore p12.keystore -deststoretype PKCS12 -srcstorepass reindeerFlotilla -deststorepass reindeerFlotilla
 #export the cert to a .pem file
 openssl pkcs12 -in p12.keystore -nokeys -out mp.cer.pem -passin pass:reindeerFlotilla
