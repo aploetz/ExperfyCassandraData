@@ -1,3 +1,11 @@
+#experfy stress yaml for security_by_id
+
+#keyspace name
+keyspace: experfy_stress
+
+#table name
+table: security_logs_by_id
+
 #Definitions for PRIMARY KEY columns
 #PRIMARY KEY ((location, day_bucket), checkpoint_time, employee_id)
 #
